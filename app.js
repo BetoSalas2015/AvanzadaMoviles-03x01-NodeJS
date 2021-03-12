@@ -1,4 +1,4 @@
-// Ejercicio 6 - Problemas con los Callbacks
+// Ejercicio 7 - Promesas  (Promises)
 
 const empleados = [
     {
@@ -26,21 +26,22 @@ const salarios = [
     }
 ];
 
-getEmpleados = ( id, callback ) => {
-    const empleado = empleados.find( (e) =>  e.id === id  );
-    if ( empleado ) {
-        callback(null, empleado);
-    } else {
-        callback(`El empleado con id ${ id } no existe.`);
-    }
+getEmpleados = (id) => {
+    const empleado = empleados.find( (e) =>  e.id === id  )?.nombre;
+
+    const promesa = new Promise( (resolve, reject) => {
+        empleado ?  resolve(empleado) : reject(`El empleado con id ${ id } no existe.`);
+        });
     
+    return promesa;
+} 
 
-}
+let id = 1;
 
-getEmpleados(3, ( err, empleado ) => {
-    if(err) {
-        console.log("Error!");
-        return console.log(err);
-    }
-    console.log(empleado);
-})
+getEmpleados(id).then( (empleado) => console.log(empleado))
+                .catch( (err) => console.log(err));
+
+
+
+
+

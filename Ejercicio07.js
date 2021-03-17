@@ -1,4 +1,4 @@
-// Ejercicio 8 - Promesas  (Promises)
+// Ejercicio 7 - Promesas  (Promises)
 
 const empleados = [
     {
@@ -46,18 +46,11 @@ getSalarios = (id) => {
 }
 
 let id = 3;
-let emp;
 
-getEmpleados(id).then((empleado) => {
-                        emp = empleado;
-                        return getSalarios(id)})
-               .then( (salario) => {
-                   console.log(`El empleado ${ emp} tiene un salario ${salario}`)
-                });
-
-
-//.catch((err) => {});
-
+getEmpleados(id).then( (empleado) => console.log(empleado))
+                .catch( (err) => console.log(err));
+getSalarios(id).then( (salario) => console.log(salario))
+               .catch( (err) => console.log(err));
 
 
 

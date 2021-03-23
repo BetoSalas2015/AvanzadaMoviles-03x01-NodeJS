@@ -4,5 +4,7 @@ const { crearArchivo } = require('./js/tablas.js');
 
 let base = 6;
 
-crearArchivo(base).then().catch();
+crearArchivo(base)
+            .then( ( nombreArchivo ) => console.log(`Archivo ${nombreArchivo} creado`.blue))
+            .catch( (err) => console.log(err) );
 

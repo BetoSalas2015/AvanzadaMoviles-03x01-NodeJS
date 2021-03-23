@@ -1,65 +1,8 @@
-// Ejercicio 8 - Promesas  (Promises)
+// Ejercicio 12 - exportar modulos 
 
-const empleados = [
-    {
-        id: 1,
-        nombre: "Raúl"
-    },
-    {
-        id: 2,
-        nombre: "David"
-    },
-    {
-        id: 3,
-        nombre: "Rosa"
-    }
-];
+const { crearArchivo } = require('./js/tablas.js');
 
-const salarios = [
-    {
-        id: 1,
-        salario: 500
-    },
-    {
-        id: 2,
-        salario: 800
-    }
-];
+let base = 6;
 
-getEmpleados = (id) => {
-    const empleado = empleados.find( (e) =>  e.id === id  )?.nombre;
-
-    const promesa = new Promise( (resolve, reject) => {
-        empleado ?  resolve(empleado) : reject(`El empleado con id ${ id } no existe.`);
-        });
-    
-    return promesa;
-} 
-
-getSalarios = (id) => {
-    const salario = salarios.find( e => e.id === id)?.salario;
-
-    const promesa = new Promise( (resolve, reject) => {
-        salario ? resolve(salario) : reject(`El empleado con id ${ id } no tiene salario`);
-    } );
-    return promesa;
-}
-
-let id = 3;
-let emp;
-
-getEmpleados(id).then((empleado) => {
-                        emp = empleado;
-                        return getSalarios(id)})
-               .then( (salario) => {
-                   console.log(`El empleado ${ emp} tiene un salario ${salario}`)
-                });
-
-
-//.catch((err) => {});
-
-
-
-
-
+crearArchivo(base).then().catch();
 
